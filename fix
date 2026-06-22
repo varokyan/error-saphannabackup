@@ -44,3 +44,35 @@ Why? When the SSM document runs on EC2 instances, it executes:
 
 aws secretsmanager get-secret-value --secret-id POC-SAP-Hanna
 The EC2 instance uses the sap-hana-backup-role role. Without this policy, it will get "Access Denied" when trying to read the password.
+
+
+----------------------------------------------
+
+Your runner role poc-runner-role needs these EC2 permissions added. Ask your AWS admin to attach this inline policy to poc-runner-role:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AssociateIamInstanceProfile",
+        "ec2:ReplaceIamInstanceProfileAssociation",
+        "ec2:DisassociateIamInstanceProfile",
+        "ec2:DescribeIamInstanceProfileAssociations",
+        "ec2:DescribeInstances",
+        "iam:PassRole"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+Steps for your admin:
+
+IAM → Roles → poc-runner-role
+Add permissions → Create inline policy → JSON → paste above
+Name it: allow-ec2-instance-profile-attach
+Save
+Without these permissions, the pipeline cannot attach the IAM role to your SAP HANA EC2 instances — which is a core requirement of your setup.
+
+Alternatively, if you can't get this permission either, I can remove the ec2-role-attachment module and you'd attach the instance profile to each EC2 manually via AWS Console. Want me to do that?
