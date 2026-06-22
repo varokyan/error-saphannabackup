@@ -76,3 +76,8 @@ Save
 Without these permissions, the pipeline cannot attach the IAM role to your SAP HANA EC2 instances — which is a core requirement of your setup.
 
 Alternatively, if you can't get this permission either, I can remove the ec2-role-attachment module and you'd attach the instance profile to each EC2 manually via AWS Console. Want me to do that?
+
+
+------------------------------
+
+poc-ssm-output-677277859823-us-east-1-an
