@@ -223,3 +223,20 @@ terraform.tfvars
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+---------------------------------------------------------------------------------------------------------------
+
+An error occurred (UnauthorizedOperation) when calling the
+│ ReplaceIamInstanceProfileAssociation operation: You are not authorized to
+│ perform this operation. User:
+│ arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c
+│ is not authorized to perform: ec2:ReplaceIamInstanceProfileAssociation on
+│ resource: arn:aws:ec2:us-east-1:677277859823:instance/i-0d939938273696777
+│ because no identity-based policy allows the
+│ ec2:ReplaceIamInstanceProfileAssociation action. Encoded authorization
+│ failure message:
+│ sWbj2bzJM90Grp9GFqwGp_YawhrL-tk7waBXY7BzqpfoIMHSXE9zXtpdY1RTjAH1B3m2Ez_DMKt6osXVId061MbZuYzKeTfLy-ZrsOpIVPQEwvhB50cBKAnzZpV3GtzX2EPGKOfxcvPcP0ExBPVZBtVIfWukdvNzE7npSNy0qfZ6o_ti2I0Zuvvyr7rR97MHHaZUVfXneDqVpjgS3V8kfnFxwSkCkInbNlQK4A0FeaU3BbstPcxN-66O7ZvaIpnm1MFRosTcaU5hG4NXMX1dzCz6VnAMGH6hVVSV-MMmJ2Bj7omc439LH41e_hGxh1o53tVSeMVt_B0CzdpaUd3dP8ZZfXdmnQJRrkKYDMpWYo1qut4W3XNC6M-HhO8eDIBOkma4PkewpsukekvD_Vs0GwyPxexgUmXM7wY0dguy4iD6JLh1d8Egdq0Uuj1WzUPlJ3TRlhsW_WCKRXKG48fsAaAfAbp5VbJF4oR5E8NCHAMXW5Ddt_6n51bIUd-xNRHjz04CnZL8JohCbzMdwDaBvkHsWCPt7dAdchzerX2jVEmmn9izM5AUbg5xIn3eLm6bZIzsnb0ghZRMXDf7ml0NASsGkKLYQGRhCmlLfe-eqQDtN7vDuyvV6CnsZ8SwwkseNcNYmKG4WhOQRY4udHw3HE8HmWqddpF_cpzXtY8SzBpKL8593_4CBZPMzp8SgMpCiSXTZ3Nak_zjwfpMA4Ky7chnPFpG-3ogjskiybBYhotxyQw9XsM5fdfL8h0rVpwj87cUHxGhMjeXtdnDbH5vDF4ys84iKF_gne0uv8Wce7Ryg93VsxlzmGxjHNmOzfI_bwgXLu6aPOHKnTTaROKeEd73-iMtdvv1WxGAWK51avbsKcJdrBj_v-0OVFSPthp4nx_kTAHVreX4CvCs0vpeAyabf9aHOWh0cW8WA3xtK1BpioBiGqAj8jMkvkPZR_KFn8gT-6EZy_zXlbG6SjH9YbXcRruGTk-MKtncz4ZSodVYJpi8zAX8ow4ux43MWKtBypSPKMx84qHCNfG3AJbXIVkQCvXUqmnJwekjHV1ymaqHz57YGFbpkwsXc3sBh9hCVsAe4EVJQk4K4Of-C6fQBIdhUg
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
