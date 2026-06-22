@@ -344,3 +344,16 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+-------------------------------------------------
+
+
+│ Error: creating Backup Plan (sap-hana-backup-backup-plan): operation error Backup: CreateBackupPlan, https response error StatusCode: 400, RequestID: 5c56dc15-1661-44d3-8d55-96f2b5285640, InvalidParameterValueException: Error in some rules due to : Invalid lifecycle. MoveToColdStorageAfterDays is unavailable
+│ 
+│   with module.backup.aws_backup_plan.sap_hana,
+│   on modules/backup/main.tf line 13, in resource "aws_backup_plan" "sap_hana":
+│   13: resource "aws_backup_plan" "sap_hana" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
