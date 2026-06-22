@@ -113,3 +113,17 @@ Error: reading IAM Policy: operation error IAM: ListPolicies, https response err
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+
+----------------------------------------------
+
+
+│ Error: "name" ("sap-hana-backup-compliance-framework") must be must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
+│ 
+│   with module.audit_manager.aws_backup_framework.sap_hana_compliance,
+│   on modules/audit-manager/main.tf line 5, in resource "aws_backup_framework" "sap_hana_compliance":
+│    5:   name        = "${var.project_name}-compliance-framework"
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
