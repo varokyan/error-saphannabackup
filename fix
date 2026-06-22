@@ -16,3 +16,31 @@ Add the role sap-hana-backup-role to it
 After creating those, re-run the pipeline.
 
 
+When you create the IAM role sap-hana-backup-role in AWS Console, you attach 6 managed policies (the ones I listed). But your SAP HANA EC2 instances also need to read the secret POC-SAP-Hanna from Secrets Manager during the SAP registration step.
+
+So on the same role (sap-hana-backup-role), add one more inline policy:
+
+Steps:
+
+Go to IAM → Roles → sap-hana-backup-role
+Click Add permissions → Create inline policy
+Switch to JSON tab
+Paste this:
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:us-east-1:677277859823:secret:POC-SAP-Hanna*"
+    }
+  ]
+}
+Click Next → Name it allow-read-sap-hanna-secret → Create policy
+Why? When the SSM document runs on EC2 instances, it executes:
+
+aws secretsmanager get-secret-value --secret-id POC-SAP-Hanna
+The EC2 instance uses the sap-hana-backup-role role. Without this policy, it will get "Access Denied" when trying to read the password.
