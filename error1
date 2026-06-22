@@ -317,3 +317,17 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+----------------------------------------------------------------------------------
+
+
+
+│ Error: creating SSM Document (sap-hana-backup-register-sap-application): operation error SSM: CreateDocument, https response error StatusCode: 400, RequestID: 4926e467-e5ff-447e-81a4-20da50e6df88, DocumentAlreadyExists: Document with same name sap-hana-backup-register-sap-application already exists
+│ 
+│   with module.sap_registration.aws_ssm_document.register_sap_application,
+│   on modules/sap-registration/main.tf line 19, in resource "aws_ssm_document" "register_sap_application":
+│   19: resource "aws_ssm_document" "register_sap_application" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
