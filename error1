@@ -127,3 +127,15 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+
+
+--------------------------------------------
+
+Executing "step_script" stage of the job script
+00:00
+$ cd terraform
+$ terraform fmt -check -recursive
+modules/ec2-role-attachment/main.tf
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
