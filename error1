@@ -240,3 +240,16 @@ An error occurred (UnauthorizedOperation) when calling the
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+-----------------------------------------------------------
+
+
+│ Error: creating SSM Association (sap-hana-backup-install-backint-agent): operation error SSM: CreateAssociation, https response error StatusCode: 400, RequestID: 9f1404b2-2e32-46b1-aa3f-275260b2fe35, InvalidOutputLocation: 
+│ 
+│   with module.ssm_validation.aws_ssm_association.install_backint,
+│   on modules/ssm-validation/main.tf line 58, in resource "aws_ssm_association" "install_backint":
+│   58: resource "aws_ssm_association" "install_backint" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
