@@ -206,3 +206,20 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+---------------------------------------------------------------------------
+
+Downloading artifacts from coordinator... ok        correlation_id=01KVQM3J6PGZP7AR56V7ME2V2V id=7370266 status=200 token=64_GK8hHJ
+WARNING: gl-sast-report.json: lchown gl-sast-report.json: operation not permitted (suppressing repeats) 
+Downloading artifacts for secret-detection-3 (7370267)...
+Runtime platform                                    arch=amd64 os=linux pid=161350 revision=c2831b75 version=19.0.1
+Downloading artifacts from coordinator... ok        correlation_id=01KVQM3JH7EHX5Q1SY1AFWW1ZJ id=7370267 status=200 token=64_GK8hHJ
+WARNING: gl-secret-detection-report.json: lchown gl-secret-detection-report.json: operation not permitted (suppressing repeats) 
+Executing "step_script" stage of the job script
+00:01
+$ cd terraform
+$ terraform fmt -check -recursive
+main.tf
+terraform.tfvars
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
