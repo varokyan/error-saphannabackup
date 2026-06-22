@@ -59,3 +59,57 @@ Planning failed. Terraform encountered an error while generating this plan.
 Cleaning up project directory and file based variables
 00:01
 ERROR: Job failed: exit code 1
+
+
+-----------------------------------
+
+Error: reading IAM Policy: operation error IAM: ListPolicies, https response error StatusCode: 403, RequestID: 34b7f0a8-341c-4bce-bda8-1f51a79c4b46, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:ListPolicies on resource: policy path / because no identity-based policy allows the iam:ListPolicies action
+│ 
+│   with module.iam.data.aws_iam_policy.ssm_managed_instance_core,
+│   on modules/iam/main.tf line 1, in data "aws_iam_policy" "ssm_managed_instance_core":
+│    1: data "aws_iam_policy" "ssm_managed_instance_core" {
+│ 
+╵
+╷
+│ Error: reading IAM Policy: operation error IAM: ListPolicies, https response error StatusCode: 403, RequestID: cf90a642-ee8a-4e28-b736-8768c2571712, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:ListPolicies on resource: policy path / because no identity-based policy allows the iam:ListPolicies action
+│ 
+│   with module.iam.data.aws_iam_policy.backup_data_transfer,
+│   on modules/iam/main.tf line 5, in data "aws_iam_policy" "backup_data_transfer":
+│    5: data "aws_iam_policy" "backup_data_transfer" {
+│ 
+╵
+╷
+│ Error: reading IAM Policy: operation error IAM: ListPolicies, https response error StatusCode: 403, RequestID: 85f2b9e0-589e-4d4f-a428-91b9a7031642, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:ListPolicies on resource: policy path / because no identity-based policy allows the iam:ListPolicies action
+│ 
+│   with module.iam.data.aws_iam_policy.backup_full_access,
+│   on modules/iam/main.tf line 9, in data "aws_iam_policy" "backup_full_access":
+│    9: data "aws_iam_policy" "backup_full_access" {
+│ 
+╵
+╷
+│ Error: reading IAM Policy: operation error IAM: ListPolicies, https response error StatusCode: 403, RequestID: c8352d40-849c-4486-a184-60db2f99157c, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:ListPolicies on resource: policy path / because no identity-based policy allows the iam:ListPolicies action
+│ 
+│   with module.iam.data.aws_iam_policy.backup_restore_sap_hana,
+│   on modules/iam/main.tf line 13, in data "aws_iam_policy" "backup_restore_sap_hana":
+│   13: data "aws_iam_policy" "backup_restore_sap_hana" {
+│ 
+╵
+╷
+│ Error: reading IAM Policy: operation error IAM: ListPolicies, https response error StatusCode: 403, RequestID: 960a17a7-d14e-4393-9ead-dbf28d95dbc0, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:ListPolicies on resource: policy path / because no identity-based policy allows the iam:ListPolicies action
+│ 
+│   with module.iam.data.aws_iam_policy.backup_service_role,
+│   on modules/iam/main.tf line 17, in data "aws_iam_policy" "backup_service_role":
+│   17: data "aws_iam_policy" "backup_service_role" {
+│ 
+╵
+╷
+│ Error: reading IAM Policy: operation error IAM: ListPolicies, https response error StatusCode: 403, RequestID: 1259ada5-4acf-4760-909f-95a04284bd6b, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:ListPolicies on resource: policy path / because no identity-based policy allows the iam:ListPolicies action
+│ 
+│   with module.iam.data.aws_iam_policy.ssm_for_sap,
+│   on modules/iam/main.tf line 21, in data "aws_iam_policy" "ssm_for_sap":
+│   21: data "aws_iam_policy" "ssm_for_sap" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
