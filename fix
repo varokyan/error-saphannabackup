@@ -1,0 +1,45 @@
+This is not a code issue — Terraform is working correctly now. The problem is your runner's IAM role (poc-runner-role) doesn't have permission to create IAM resources.
+
+You need to add IAM permissions to poc-runner-role in AWS Console:
+
+Go to AWS Console → IAM → Roles → poc-runner-role
+Click Add permissions → Attach policies
+Attach: IAMFullAccess
+Click Add permissions
+Or if you can't use IAMFullAccess (too broad), create an inline policy with just what's needed:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:TagRole",
+        "iam:PassRole",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListRolePolicies",
+        "iam:CreateInstanceProfile",
+        "iam:DeleteInstanceProfile",
+        "iam:GetInstanceProfile",
+        "iam:AddRoleToInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:TagInstanceProfile",
+        "iam:CreatePolicy",
+        "iam:DeletePolicy",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:ListPolicyVersions",
+        "iam:TagPolicy"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+Steps: IAM → Roles → poc-runner-role → Add permissions → Create inline policy → JSON → paste the above → Name it terraform-iam-permissions → Create
+
+After that, re-run the pipeline.
