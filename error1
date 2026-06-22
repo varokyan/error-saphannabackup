@@ -167,3 +167,16 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+----------------------------------------
+
+
+│ Error: reading IAM Instance Profile (sap-hana-backup-role): operation error IAM: GetInstanceProfile, https response error StatusCode: 403, RequestID: f3d20da3-aabc-45af-9556-8c175b0c548c, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:GetInstanceProfile on resource: instance profile sap-hana-backup-role because no identity-based policy allows the iam:GetInstanceProfile action
+│ 
+│   with module.iam.data.aws_iam_instance_profile.sap_backup_profile,
+│   on modules/iam/main.tf line 8, in data "aws_iam_instance_profile" "sap_backup_profile":
+│    8: data "aws_iam_instance_profile" "sap_backup_profile" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
