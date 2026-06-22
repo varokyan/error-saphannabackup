@@ -274,3 +274,25 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+
+---------------------------------------------------
+
+
+│ Error: creating SSM Document (sap-hana-backup-install-backint-agent): operation error SSM: CreateDocument, https response error StatusCode: 400, RequestID: 2a8296f5-4a4e-44b8-aad1-b092f591091d, DocumentAlreadyExists: Document with same name sap-hana-backup-install-backint-agent already exists
+│ 
+│   with module.ssm_validation.aws_ssm_document.install_backint_agent,
+│   on modules/ssm-validation/main.tf line 8, in resource "aws_ssm_document" "install_backint_agent":
+│    8: resource "aws_ssm_document" "install_backint_agent" {
+│ 
+╵
+╷
+│ Error: creating SSM Document (sap-hana-backup-validate-ssm-status): operation error SSM: CreateDocument, https response error StatusCode: 400, RequestID: 267f9194-724d-43a4-a48a-0fffd0aeafe3, DocumentAlreadyExists: Document with same name sap-hana-backup-validate-ssm-status already exists
+│ 
+│   with module.ssm_validation.aws_ssm_document.validate_ssm_status,
+│   on modules/ssm-validation/main.tf line 81, in resource "aws_ssm_document" "validate_ssm_status":
+│   81: resource "aws_ssm_document" "validate_ssm_status" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
