@@ -139,3 +139,17 @@ modules/ec2-role-attachment/main.tf
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+-----------------------------------------------------------------------------
+
+
+╷
+│ Error: creating IAM Role (sap-hana-backup-role): operation error IAM: CreateRole, https response error StatusCode: 403, RequestID: 6a33c18a-ad08-4d49-a34b-18cbc52097fe, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: iam:CreateRole on resource: arn:aws:iam::677277859823:role/sap/sap-hana-backup-role because no identity-based policy allows the iam:CreateRole action
+│ 
+│   with module.iam.aws_iam_role.sap_backup_role,
+│   on modules/iam/main.tf line 12, in resource "aws_iam_role" "sap_backup_role":
+│   12: resource "aws_iam_role" "sap_backup_role" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
