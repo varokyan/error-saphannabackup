@@ -81,3 +81,27 @@ Alternatively, if you can't get this permission either, I can remove the ec2-rol
 ------------------------------
 
 poc-ssm-output-677277859823-us-east-1-an
+
+----------------------------------------------------------------------------------
+The IAM role sap-hana-backup-role trust policy doesn't allow AWS Backup to assume it.
+
+Go to AWS Console → IAM → Roles → sap-hana-backup-role → Trust relationships → Edit trust policy and make sure it looks like this:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "ec2.amazonaws.com",
+          "backup.amazonaws.com",
+          "ssm.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+The key part is "backup.amazonaws.com" must be in the Principal → Service list. If it only has "ec2.amazonaws.com", add the other two.
+
