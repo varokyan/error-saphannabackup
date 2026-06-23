@@ -564,3 +564,23 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+---------------------------------------------------
+
+│ Error: creating Backup Report Plan (sap_hana_backup_compliance_report): operation error Backup: CreateReportPlan, https response error StatusCode: 400, RequestID: d6200a55-8757-4b73-b3d3-23253c1bca15, InvalidParameterValueException: Invalid report coverage [arn:aws:backup:us-east-1:677277859823:framework:sap_hana_backup_compliance_framework-7c80c13e-2069-430e-b204-98c29ff62cd7] for selected template BACKUP_JOB_REPORT. Remove it and try again.
+│ 
+│   with module.audit_manager.aws_backup_report_plan.compliance_report,
+│   on modules/audit-manager/main.tf line 57, in resource "aws_backup_report_plan" "compliance_report":
+│   57: resource "aws_backup_report_plan" "compliance_report" {
+│ 
+╵
+╷
+│ Error: creating CloudWatch Logs Log Group (/aws/backup/sap-hana-backup-events): operation error CloudWatch Logs: CreateLogGroup, https response error StatusCode: 400, RequestID: 230f4f0b-e38f-442f-95c3-02256d8e36a7, ResourceAlreadyExistsException: The specified log group already exists
+│ 
+│   with module.cloudwatch.aws_cloudwatch_log_group.backup_events,
+│   on modules/cloudwatch/main.tf line 82, in resource "aws_cloudwatch_log_group" "backup_events":
+│   82: resource "aws_cloudwatch_log_group" "backup_events" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:01
+ERROR: Job failed: exit status 1
