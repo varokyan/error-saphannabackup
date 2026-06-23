@@ -524,3 +524,23 @@ Error: creating Backup Framework (sap_hana_backup_compliance_framework): operati
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+---------------------------------------------------
+
+│ Error: creating Backup Report Plan (sap_hana_backup_compliance_report): operation error Backup: CreateReportPlan, https response error StatusCode: 400, RequestID: 573f2da7-720e-40e4-8371-ba26805e7660, InvalidParameterValueException: Invalid S3 key prefix backup-audit-reports/. The S3 key prefix cannot start or end with a slash (/), or exceed 255 characters. Change the prefix and try again.
+│ 
+│   with module.audit_manager.aws_backup_report_plan.compliance_report,
+│   on modules/audit-manager/main.tf line 57, in resource "aws_backup_report_plan" "compliance_report":
+│   57: resource "aws_backup_report_plan" "compliance_report" {
+│ 
+╵
+╷
+│ Error: creating CloudWatch Logs Log Group (/aws/backup/sap-hana-backup-events): operation error CloudWatch Logs: CreateLogGroup, https response error StatusCode: 400, RequestID: b2bf6012-dbcd-414f-b59e-7e9620d115a5, ResourceAlreadyExistsException: The specified log group already exists
+│ 
+│   with module.cloudwatch.aws_cloudwatch_log_group.backup_events,
+│   on modules/cloudwatch/main.tf line 82, in resource "aws_cloudwatch_log_group" "backup_events":
+│   82: resource "aws_cloudwatch_log_group" "backup_events" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:01
+ERROR: Job failed: exit status 1
