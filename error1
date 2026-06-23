@@ -407,3 +407,11 @@ Error: creating Backup Plan (sap-hana-backup-backup-plan): operation error Backu
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+------------------------------------------------------
+
+
+│ Error: creating Backup Selection (sap-hana-backup-instance-selection): operation error Backup: CreateBackupSelection, https response error StatusCode: 400, RequestID: 9e4f1e98-95bf-474e-af81-848dc5a5c9a3, InvalidParameterValueException: IAM Role cannot be assumed by AWS Backup
+│ 
+│   with module.backup.aws_backup_selection.sap_hana_instances,
+│   on modules/backup/main.tf line 77, in resource "aws_backup_selection" "sap_hana_instances":
+│   77: resource "aws_backup_selection" "sap_hana_instances" {
