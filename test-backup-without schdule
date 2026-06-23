@@ -1,0 +1,17 @@
+To trigger a backup NOW (for testing):
+Run this in AWS CloudShell or ask your runner to execute it:
+
+aws backup start-backup-job \
+  --backup-vault-name sap-hana-backup-vault \
+  --resource-arn arn:aws:ec2:us-east-1:677277859823:instance/i-0d939938273696777 \
+  --iam-role-arn arn:aws:iam::677277859823:role/sap-hana-backup-role
+Replace i-0d939938273696777 with your actual instance ID from instance_list.txt.
+
+To check if the backup plan is active:
+aws backup list-backup-plans --query 'BackupPlansList[].[BackupPlanName,BackupPlanId]' --output table
+To check upcoming scheduled jobs:
+Go to AWS Console → AWS Backup → Jobs → Backup jobs — you'll see scheduled jobs listed there once the next window starts.
+
+Summary: The infrastructure is deployed correctly. Backup jobs will start automatically at 2:00 AM UTC. To test immediately, run the manual backup command above.
+
+
