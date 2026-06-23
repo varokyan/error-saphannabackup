@@ -395,3 +395,15 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+----------------------------------------------------------
+
+Error: creating Backup Plan (sap-hana-backup-backup-plan): operation error Backup: CreateBackupPlan, https response error StatusCode: 400, RequestID: 10a302df-6985-41f3-861f-7aa6c7addcfd, AlreadyExistsException: Backup plan with the same plan document already exists
+│ 
+│   with module.backup.aws_backup_plan.sap_hana,
+│   on modules/backup/main.tf line 13, in resource "aws_backup_plan" "sap_hana":
+│   13: resource "aws_backup_plan" "sap_hana" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
