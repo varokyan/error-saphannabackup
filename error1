@@ -383,3 +383,15 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+---------------------------------------------------------------------------------
+
+│ Error: creating Backup Selection (sap-hana-backup-instance-selection): operation error Backup: CreateBackupSelection, https response error StatusCode: 400, RequestID: d8ec47e3-a27a-4eb8-b916-29dd189e4f4a, InvalidParameterValueException: IAM Role cannot be assumed by AWS Backup
+│ 
+│   with module.backup.aws_backup_selection.sap_hana_instances,
+│   on modules/backup/main.tf line 77, in resource "aws_backup_selection" "sap_hana_instances":
+│   77: resource "aws_backup_selection" "sap_hana_instances" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
