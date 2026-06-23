@@ -167,5 +167,7 @@ Then re-run the pipeline.
 If the iam:CreateServiceLinkedRole error STILL happens after running the command above, it means there's an Organization SCP (Service Control Policy) blocking it. In that case tell me and I'll disable just the audit_manager module — the rest of the infrastructure will work fine without it.
 
 
+----------------------
 
-
+aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup
+aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup-events
