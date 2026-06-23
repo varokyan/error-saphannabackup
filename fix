@@ -198,3 +198,27 @@ Est. Credits Used: 0.75
 Elapsed Time: 13s
 
 No file chosen
+----------------------------------------------------
+
+The local file has -monitor but your GitLab is still showing -events. That means your GitLab isn't pulling from terraform-sap-backup-v2 branch.
+
+But regardless, let me fix both issues and push:
+
+
+3 tools
+
+Pushed.
+
+Two things you need to do:
+
+1. Make sure your GitLab pipeline is using branch terraform-sap-backup-v2 (not the old terraform-sap-backup). The log group error shows -events which means your pipeline is running old code.
+
+2. Delete the log group that still exists:
+
+aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup-events
+Then re-run the pipeline from the terraform-sap-backup-v2 branch.
+
+
+Est. Credits Used: 1.32
+
+Elapsed Time: 58s
