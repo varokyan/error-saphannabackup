@@ -435,3 +435,32 @@ Error: creating Backup Framework (sap_hana_backup_compliance_framework): operati
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+-------------------------------------------------------
+
+
+│ Error: creating Backup Framework (sap_hana_backup_compliance_framework): operation error Backup: CreateFramework, https response error StatusCode: 400, RequestID: 27e6305d-ab42-48f3-8b71-83fde463d70d, InvalidParameterValueException: Parameter name-value pair must be either both empty or both non-empty in control BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN.
+│ 
+│   with module.audit_manager.aws_backup_framework.sap_hana_compliance,
+│   on modules/audit-manager/main.tf line 4, in resource "aws_backup_framework" "sap_hana_compliance":
+│    4: resource "aws_backup_framework" "sap_hana_compliance" {
+│ 
+╵
+╷
+│ Error: creating S3 Bucket (poc-backupaudit-report) Public Access Block: operation error S3: PutPublicAccessBlock, https response error StatusCode: 403, RequestID: K6KXAP4PXY6C9RYV, HostID: YGXn3/EgaJE9Ql7VVLTspcDuf9K5QPv8Q7UxAoufeTaTL8L5JqLf6p2gc+OIUpiFC44EGUrOdhw=, api error AccessDenied: User: arn:aws:sts::677277859823:assumed-role/poc-runner-role/i-0fc2ab1049247838c is not authorized to perform: s3:PutBucketPublicAccessBlock on resource: "arn:aws:s3:::poc-backupaudit-report" with an explicit deny in a service control policy: arn:aws:organizations::686844295637:policy/o-9ddkfhpv51/service_control_policy/p-tgsk8b3f
+│ 
+│   with module.audit_manager.aws_s3_bucket_public_access_block.audit_reports,
+│   on modules/audit-manager/main.tf line 109, in resource "aws_s3_bucket_public_access_block" "audit_reports":
+│  109: resource "aws_s3_bucket_public_access_block" "audit_reports" {
+│ 
+╵
+╷
+│ Error: creating CloudWatch Logs Log Group (/aws/backup/sap-hana-backup): operation error CloudWatch Logs: CreateLogGroup, https response error StatusCode: 400, RequestID: d609c2fc-6677-4236-9987-77f1073baecd, ResourceAlreadyExistsException: The specified log group already exists
+│ 
+│   with module.cloudwatch.aws_cloudwatch_log_group.backup_events,
+│   on modules/cloudwatch/main.tf line 82, in resource "aws_cloudwatch_log_group" "backup_events":
+│   82: resource "aws_cloudwatch_log_group" "backup_events" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:01
+ERROR: Job failed: exit status 1
