@@ -105,3 +105,29 @@ Go to AWS Console → IAM → Roles → sap-hana-backup-role → Trust relations
 }
 The key part is "backup.amazonaws.com" must be in the Principal → Service list. If it only has "ec2.amazonaws.com", add the other two.
 
+-------------------------------------
+
+What you need to do:
+1. Add permission to poc-runner-role:
+
+IAM → Roles → poc-runner-role → Add permissions → Create inline policy → JSON:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iam:CreateServiceLinkedRole",
+      "Resource": "arn:aws:iam::677277859823:role/aws-service-role/backup.amazonaws.com/*"
+    }
+  ]
+}
+Name: allow-backup-service-linked-role
+
+2. Delete the existing S3 bucket:
+
+S3 Console → poc-backupaudit-report → Empty it first (if needed) → Delete bucket
+
+3. Re-run the pipeline
+
+
