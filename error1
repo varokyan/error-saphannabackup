@@ -415,3 +415,23 @@ ERROR: Job failed: exit status 1
 │   with module.backup.aws_backup_selection.sap_hana_instances,
 │   on modules/backup/main.tf line 77, in resource "aws_backup_selection" "sap_hana_instances":
 │   77: resource "aws_backup_selection" "sap_hana_instances" {
+------------------------------------------------------------------------------
+
+Error: creating Backup Framework (sap_hana_backup_compliance_framework): operation error Backup: CreateFramework, https response error StatusCode: 400, RequestID: ce0f6d55-3378-4a68-a0e4-0eb7fecceb48, InvalidParameterValueException: Invalid compliance resource type EC2 in control BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK.
+│ 
+│   with module.audit_manager.aws_backup_framework.sap_hana_compliance,
+│   on modules/audit-manager/main.tf line 4, in resource "aws_backup_framework" "sap_hana_compliance":
+│    4: resource "aws_backup_framework" "sap_hana_compliance" {
+│ 
+╵
+╷
+│ Error: creating S3 Bucket (poc-backupaudit_report): operation error S3: CreateBucket, https response error StatusCode: 400, RequestID: Q98NYFTRMP3C9JF0, HostID: lg0kT1wBKeuunPA2KyFdA4dWfAvIBILD6WjGuWmiChTTFFEQwKJB6AQ9d8LYLHvxpD0e262piysNKljCBRwmpPN+y1zLC/Iy, api error InvalidBucketName: The specified bucket is not valid.
+│ 
+│   with module.audit_manager.aws_s3_bucket.audit_reports,
+│   on modules/audit-manager/main.tf line 108, in resource "aws_s3_bucket" "audit_reports":
+│  108: resource "aws_s3_bucket" "audit_reports" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
