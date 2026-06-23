@@ -152,5 +152,20 @@ S3 Console → find poc-backupaudit-report → Empty bucket → Delete bucket
 
 If you can't delete it because it's owned by another account or has a retention policy, tell me and I'll rename it in the code.
 
+--------------------------------------------------
+
+Summary — do these 2 things:
+1. Create the service-linked role manually (run in AWS CloudShell):
+
+aws iam create-service-linked-role --aws-service-name backup.amazonaws.com
+(If it says "already exists" that's fine — it means the framework should work)
+
+2. Delete the old log group (or it was renamed so should be fine now)
+
+Then re-run the pipeline.
+
+If the iam:CreateServiceLinkedRole error STILL happens after running the command above, it means there's an Organization SCP (Service Control Policy) blocking it. In that case tell me and I'll disable just the audit_manager module — the rest of the infrastructure will work fine without it.
+
+
 
 
