@@ -504,3 +504,23 @@ Error: creating Backup Framework (sap_hana_backup_compliance_framework): operati
 Cleaning up project directory and file based variables
 00:01
 ERROR: Job failed: exit status 1
+-------------------------------------------
+
+Error: creating Backup Framework (sap_hana_backup_compliance_framework): operation error Backup: CreateFramework, https response error StatusCode: 403, RequestID: 33205c7b-9a3f-4a4f-af67-05e6a46f5959, api error AccessDeniedException: Action failed because of insufficient IAM permissions. Add "iam:CreateServiceLinkedRole" to your IAM policy and try again.
+│ 
+│   with module.audit_manager.aws_backup_framework.sap_hana_compliance,
+│   on modules/audit-manager/main.tf line 4, in resource "aws_backup_framework" "sap_hana_compliance":
+│    4: resource "aws_backup_framework" "sap_hana_compliance" {
+│ 
+╵
+╷
+│ Error: creating CloudWatch Logs Log Group (/aws/backup/sap-hana-backup-events): operation error CloudWatch Logs: CreateLogGroup, https response error StatusCode: 400, RequestID: cb6c5d8a-41ba-424b-92de-06c8cfe45867, ResourceAlreadyExistsException: The specified log group already exists
+│ 
+│   with module.cloudwatch.aws_cloudwatch_log_group.backup_events,
+│   on modules/cloudwatch/main.tf line 82, in resource "aws_cloudwatch_log_group" "backup_events":
+│   82: resource "aws_cloudwatch_log_group" "backup_events" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
