@@ -544,3 +544,23 @@ ERROR: Job failed: exit status 1
 Cleaning up project directory and file based variables
 00:01
 ERROR: Job failed: exit status 1
+--------------------------------------------------
+
+│ Error: creating Backup Framework (sap_hana_backup_compliance_framework): operation error Backup: CreateFramework, https response error StatusCode: 400, RequestID: baba99f8-c246-4d19-bb09-47b0473102d0, AlreadyExistsException: A framework with these controls and configurations already exists in this account 677277859823. To create new framework sap_hana_backup_compliance_framework, change the number or scope of the controls.
+│ 
+│   with module.audit_manager.aws_backup_framework.sap_hana_compliance,
+│   on modules/audit-manager/main.tf line 4, in resource "aws_backup_framework" "sap_hana_compliance":
+│    4: resource "aws_backup_framework" "sap_hana_compliance" {
+│ 
+╵
+╷
+│ Error: creating S3 Bucket (poc-backupaudit-report): BucketAlreadyExists
+│ 
+│   with module.audit_manager.aws_s3_bucket.audit_reports,
+│   on modules/audit-manager/main.tf line 77, in resource "aws_s3_bucket" "audit_reports":
+│   77: resource "aws_s3_bucket" "audit_reports" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
