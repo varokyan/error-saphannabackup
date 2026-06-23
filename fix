@@ -171,3 +171,6 @@ If the iam:CreateServiceLinkedRole error STILL happens after running the command
 
 aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup
 aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup-events
+-----------------------
+
+aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup-events
