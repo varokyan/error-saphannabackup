@@ -369,3 +369,17 @@ Error: creating Backup Plan (sap-hana-backup-backup-plan): operation error Backu
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+
+----------------------------------------------------------------------------------------
+
+
+│ Error: creating Backup Plan (sap-hana-backup-backup-plan): operation error Backup: CreateBackupPlan, https response error StatusCode: 400, RequestID: c51d60de-9bd2-4f2a-a04a-93a3bc5ce13b, InvalidParameterValueException: Error in some rules due to : Invalid lifecycle. DeleteAfterDays cannot be less than 90 days apart from MoveToColdStorageAfterDays
+│ 
+│   with module.backup.aws_backup_plan.sap_hana,
+│   on modules/backup/main.tf line 13, in resource "aws_backup_plan" "sap_hana":
+│   13: resource "aws_backup_plan" "sap_hana" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
