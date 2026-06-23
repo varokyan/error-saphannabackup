@@ -130,4 +130,27 @@ S3 Console → poc-backupaudit-report → Empty it first (if needed) → Delete 
 
 3. Re-run the pipeline
 
+-----------------------------------
+
+The permission might need a broader resource scope. Update the inline policy you created on poc-runner-role:
+
+Replace it with this (Resource = *):
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iam:CreateServiceLinkedRole",
+      "Resource": "*"
+    }
+  ]
+}
+For the S3 bucket — it already exists. Did you delete it? If not, go to:
+
+S3 Console → find poc-backupaudit-report → Empty bucket → Delete bucket
+
+If you can't delete it because it's owned by another account or has a retention policy, tell me and I'll rename it in the code.
+
+
 
