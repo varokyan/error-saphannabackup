@@ -484,3 +484,23 @@ Error: creating Backup Framework (sap_hana_backup_compliance_framework): operati
 Cleaning up project directory and file based variables
 00:01
 ERROR: Job failed: exit status 1
+---------------------------------------------------------------------------------------
+
+Error: creating Backup Framework (sap_hana_backup_compliance_framework): operation error Backup: CreateFramework, https response error StatusCode: 403, RequestID: c6d78eca-0dfd-493a-8e72-a9da8c9bbd7a, api error AccessDeniedException: Action failed because of insufficient IAM permissions. Add "iam:CreateServiceLinkedRole" to your IAM policy and try again.
+│ 
+│   with module.audit_manager.aws_backup_framework.sap_hana_compliance,
+│   on modules/audit-manager/main.tf line 4, in resource "aws_backup_framework" "sap_hana_compliance":
+│    4: resource "aws_backup_framework" "sap_hana_compliance" {
+│ 
+╵
+╷
+│ Error: creating S3 Bucket (poc-backupaudit-report): BucketAlreadyExists
+│ 
+│   with module.audit_manager.aws_s3_bucket.audit_reports,
+│   on modules/audit-manager/main.tf line 77, in resource "aws_s3_bucket" "audit_reports":
+│   77: resource "aws_s3_bucket" "audit_reports" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:01
+ERROR: Job failed: exit status 1
