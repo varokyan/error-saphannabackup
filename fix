@@ -174,3 +174,27 @@ aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup-events
 -----------------------
 
 aws logs delete-log-group --log-group-name /aws/backup/sap-hana-backup-events
+---------------------------------------
+Both resources already exist from previous runs. Delete them:
+
+1. Delete the Backup Framework:
+
+AWS Console → AWS Backup → Frameworks
+Find the framework with same controls (may be named differently from a previous attempt)
+Delete it
+Or via CLI:
+
+aws backup delete-framework --framework-name sap_hana_backup_compliance_framework
+2. Delete the S3 Bucket:
+
+aws s3 rb s3://poc-backupaudit-report --force
+Or in console: S3 → poc-backupaudit-report → Empty → Delete
+
+Then re-run the pipeline.
+
+
+Est. Credits Used: 0.75
+
+Elapsed Time: 13s
+
+No file chosen
