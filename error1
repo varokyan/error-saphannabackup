@@ -639,3 +639,23 @@ Error: creating Backup Report Plan (sap_hana_backup_compliance_report): operatio
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+------------------------------------------
+
+  13.715743] cloud-init[1466]:   File "/usr/lib64/python3.6/tempfile.py", line 588, in NamedTemporaryFile
+[   13.718135] cloud-init[1466]:     (fd, name) = _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+[   13.731916] cloud-init[1466]:   File "/usr/lib64/python3.6/tempfile.py", line 283, in _mkstemp_inner
+[   13.733367] cloud-init[1466]:     fd = _os.open(file, flags, 0o600)
+[   13.734376] cloud-init[1466]: OSError: [Errno 28] No space left on device: '/var/lib/cloud/data/tmpnr5ht70s'
+
+
+
+
+Welcome to SUSE Linux Enterprise Server for SAP Applications 15 SP6  (x86_64) - Kernel 6.4.0-150600.23.92-default (ttyS0).
+
+eth0:  
+
+Current As Of:            Thu Jun 25 08:18:56 2026
+Network Interfaces
+ eth0:                    (Unconfigured)
+
+
