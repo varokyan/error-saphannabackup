@@ -601,3 +601,15 @@ Destroy complete! Resources: 0 destroyed.
 Cleaning up project directory and file based variables
 00:00
 Job succeeded
+---------------------------------------------------------
+
+ERROR: Failed to remove network for build
+ERROR: Preparation failed: creating docker connection: creating docker tunnel: preparing environment: getting instance connect info: refreshing connect info: rpc error: code = Unknown desc = sending ssh key: operation error EC2 Instance Connect: SendSSHPublicKey, https response error StatusCode: 400, RequestID: 423b6a3a-6e63-4cac-9f59-2f941036818e, EC2InstanceStateInvalidException: Unable to connect to the instance. EC2 Instance Connect is not supported on a terminated instance.
+Will be retried in 3s ...
+ERROR: Failed to remove network for build
+ERROR: Preparation failed: creating docker connection: creating docker tunnel: preparing environment: getting instance connect info: refreshing connect info: rpc error: code = Unknown desc = sending ssh key: operation error EC2 Instance Connect: SendSSHPublicKey, https response error StatusCode: 400, RequestID: d234c9fb-5d79-4c2c-bc5e-051e64714815, EC2InstanceStateInvalidException: Unable to connect to the instance. EC2 Instance Connect is not supported on a terminated instance.
+Will be retried in 3s ...
+ERROR: Failed to remove network for build
+ERROR: Preparation failed: creating docker connection: creating docker tunnel: preparing environment: getting instance connect info: refreshing connect info: rpc error: code = Unknown desc = sending ssh key: operation error EC2 Instance Connect: SendSSHPublicKey, https response error StatusCode: 400, RequestID: 5dffdcb4-edab-4f79-91c9-6480a65f89ed, EC2InstanceStateInvalidException: Unable to connect to the instance. EC2 Instance Connect is not supported on a terminated instance.
+Will be retried in 3s ...
+ERROR: Job failed (system failure): creating docker connection: creating docker tunnel: preparing environment: getting instance connect info: refreshing connect info: rpc error: code = Unknown desc = sending ssh key: operation error EC2 Instance Connect: SendSSHPublicKey, https response error StatusCode: 400, RequestID: 5dffdcb4-edab-4f79-91c9-6480a65f89ed, EC2InstanceStateInvalidException: Unable to connect to the instance. EC2 Instance Connect is not supported on a terminated instance.
