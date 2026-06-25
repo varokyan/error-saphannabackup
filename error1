@@ -613,3 +613,17 @@ ERROR: Failed to remove network for build
 ERROR: Preparation failed: creating docker connection: creating docker tunnel: preparing environment: getting instance connect info: refreshing connect info: rpc error: code = Unknown desc = sending ssh key: operation error EC2 Instance Connect: SendSSHPublicKey, https response error StatusCode: 400, RequestID: 5dffdcb4-edab-4f79-91c9-6480a65f89ed, EC2InstanceStateInvalidException: Unable to connect to the instance. EC2 Instance Connect is not supported on a terminated instance.
 Will be retried in 3s ...
 ERROR: Job failed (system failure): creating docker connection: creating docker tunnel: preparing environment: getting instance connect info: refreshing connect info: rpc error: code = Unknown desc = sending ssh key: operation error EC2 Instance Connect: SendSSHPublicKey, https response error StatusCode: 400, RequestID: 5dffdcb4-edab-4f79-91c9-6480a65f89ed, EC2InstanceStateInvalidException: Unable to connect to the instance. EC2 Instance Connect is not supported on a terminated instance.
+------------------------------------------------------------------
+
+Downloading artifacts for kics-iac-sast-1 (7403418)...
+Runtime platform                                    arch=amd64 os=linux pid=297784 revision=c2831b75 version=19.0.1
+Downloading artifacts from coordinator... ok        correlation_id=01KVYPXGFFQVEQ0PC69RMH9PDN id=7403418 status=200 token=64_tJpar3
+WARNING: gl-sast-report.json: lchown gl-sast-report.json: operation not permitted (suppressing repeats) 
+Executing "step_script" stage of the job script
+00:00
+$ cd terraform
+$ terraform fmt -check -recursive
+terraform.tfvars
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
