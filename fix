@@ -222,3 +222,24 @@ Then re-run the pipeline from the terraform-sap-backup-v2 branch.
 Est. Credits Used: 1.32
 
 Elapsed Time: 58s
+-----------------------------------------------
+
+Do these 2 things:
+
+1. Delete manually in AWS Console (one-time):
+AWS Backup → Backup plans → delete sap-hana-backup-backup-plan
+AWS Backup → Vaults → delete sap-hana-backup-vault (remove recovery points first)
+AWS Backup → Frameworks → delete the compliance framework
+Systems Manager → Documents → Owned by me → delete all sap-hana-backup-* documents
+Systems Manager → State Manager → delete all SAP associations
+CloudWatch → Dashboards → delete sap-hana-backup-backup-dashboard
+CloudWatch → Alarms → delete sap-hana-backup-* alarms
+CloudWatch → Log groups → delete /aws/backup/sap-hana-backup-monitor
+EventBridge → Rules → delete sap-hana-backup-* rules
+SNS → Topics → delete sap-hana-backup-backup-notifications
+S3 → empty & delete poc-backupaudit-report
+2. Then run the pipeline:
+GitLab → CI/CD → Run pipeline → wait for plan → click ▶ on apply
+
+This will create everything fresh with Terraform tracking the state.
+
