@@ -242,4 +242,15 @@ S3 → empty & delete poc-backupaudit-report
 GitLab → CI/CD → Run pipeline → wait for plan → click ▶ on apply
 
 This will create everything fresh with Terraform tracking the state.
+-------------------------
 
+# Get secret ARN
+SECRET_ARN=$(aws secretsmanager describe-secret --secret-id POC-SAP-Hanna --query ARN --output text)
+
+# Register
+aws ssm-sap register-application \
+  --application-id HSB \
+  --application-type HANA \
+  --instances $(curl -s http://169.254.169.254/latest/meta-data/instance-id) \
+  --credentials "[{\"DatabaseName\":\"SYSTEMDB\",\"CredentialType\":\"ADMIN\",\"SecretId\":\"$SECRET_ARN\"}]" \
+  --region us-east-1
