@@ -424,4 +424,42 @@ Summary — Two Roles Needed:
 Role	Attached to	Purpose
 nonprod-runner-role	Runner EC2 instance	Terraform runs with these permissions to create/manage resources
 sap-hana-backup-role	SAP HANA EC2 instances	Backup agent, SSM, and SAP services use this role
+----------------------------------
+Your instance is broken. Two critical issues:
+
+No space left on device — disk is full, nothing can run
+eth0: (Unconfigured) — no network, can't reach AWS APIs
+You cannot register SAP until you fix the instance. The instance can't even boot properly.
+
+Fix: Extend the root EBS volume (no SSH needed)
+Since you can't SSH in (no network), do this from AWS Console:
+
+Step 1: Stop the instance
+EC2 → select instance → Instance state → Stop instance
+Step 2: Extend the root volume
+EC2 → Volumes (left menu)
+Find the root volume attached to your instance (check Attachment info)
+Select it → Actions → Modify volume
+Increase size (e.g., 50GB → 100GB)
+Click Modify → confirm
+Step 3: Start the instance
+EC2 → select instance → Instance state → Start instance
+Step 4: After instance starts, grow the filesystem
+Connect via SSM Session Manager (if SSM agent comes back online) or EC2 Serial Console:
+
+# Grow partition (if needed)
+sudo growpart /dev/xvda 1
+
+# Grow filesystem
+sudo xfs_growfs /
+# OR if ext4:
+sudo resize2fs /dev/xvda1
+After disk is fixed:
+Verify: df -h (should show free space)
+Reboot: sudo reboot
+After reboot, all 3 checks should pass
+Then SAP registration will work
+The SAP registration, backups, SSM — NOTHING will work until the disk has free space. Fix the disk first, everything else follows.
+
+
 
