@@ -531,7 +531,10 @@ ERROR: Job failed: exit status 1
 │   with module.audit_manager.aws_backup_report_plan.compliance_report,
 │   on modules/audit-manager/main.tf line 57, in resource "aws_backup_report_plan" "compliance_report":
 │   57: resource "aws_backup_report_plan" "compliance_report" {
-│ 
+│ --------------------
+
+Status message
+Discovered 1 SAP instances. {Error connecting to database HSB/SYSTEMDB when validating its credentials. HANA error code: -10709. HANA error message: nnection failed: Connection failed (RTE:[89006] System call 'connect' failed, rc=111:Connection refused {172.27.205.91:30013} (ldsxdb00h:3001},{Discovery failed because credentials for HSB/SYSTEMDB either not provided or cannot be validated.},
 ╵
 ╷
 │ Error: creating CloudWatch Logs Log Group (/aws/backup/sap-hana-backup-events): operation error CloudWatch Logs: CreateLogGroup, https response error StatusCode: 400, RequestID: b2bf6012-dbcd-414f-b59e-7e9620d115a5, ResourceAlreadyExistsException: The specified log group already exists
