@@ -661,4 +661,16 @@ Current As Of:            Thu Jun 25 08:18:56 2026
 Network Interfaces
  eth0:                    (Unconfigured)
 
+-----------------------------------------------------------------------
 
+usage: 
+Note: AWS CLI version 2, the latest major version of the AWS CLI, is now stable and recommended for general use. For more information, see the AWS CLI version 2 installation instructions at: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+aws: error: argument --region: expected one argument
+failed to run commands: exit status 2
