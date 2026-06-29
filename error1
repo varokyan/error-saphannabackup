@@ -674,3 +674,8 @@ To see help text, you can run:
   aws <command> <subcommand> help
 aws: error: argument --region: expected one argument
 failed to run commands: exit status 2
+----------------------------------------------------------------
+
+An error occurred (ValidationException) when calling the RegisterApplication operation: SID, instance number, and credentials of HANA instance must be specified for SAP applications with type HANA.
+
+failed to run commands: exit status 255
