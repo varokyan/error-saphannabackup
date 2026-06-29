@@ -679,3 +679,7 @@ failed to run commands: exit status 2
 An error occurred (ValidationException) when calling the RegisterApplication operation: SID, instance number, and credentials of HANA instance must be specified for SAP applications with type HANA.
 
 failed to run commands: exit status 255
+----------------------------------------
+An error occurred (ValidationException) when calling the RegisterApplication operation: DatabaseNames in credentials must follow the format of <SID>/<database_name>. e.g. HDB/SYSTEMDB
+
+failed to run commands: exit status 255
