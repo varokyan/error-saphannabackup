@@ -536,4 +536,100 @@ provider "aws" {
     }
   }
 }
+=======================================================================
+
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+
+data "aws_secretsmanager_secret" "sap_hana_credentials" {
+  name = var.hana_secret_name
+}
+
+data "aws_secretsmanager_secret_version" "sap_hana_credentials" {
+  secret_id = data.aws_secretsmanager_secret.sap_hana_credentials.id
+}
+
+locals {
+  secret_data          = jsondecode(data.aws_secretsmanager_secret_version.sap_hana_credentials.secret_string)
+  hana_master_username = local.secret_data["username"]
+  hana_master_password = local.secret_data["password"]
+  secret_arn           = data.aws_secretsmanager_secret.sap_hana_credentials.arn
+}
+
+resource "aws_ssm_document" "register_sap_application" {
+  name            = "${var.project_name}-register-sap-app-v2"
+  document_type   = "Command"
+  document_format = "YAML"
+
+  content = yamlencode({
+    schemaVersion = "2.2"
+    description   = "Register EC2 instance with AWS Systems Manager for SAP"
+    parameters = {
+      SecretArn = {
+        type        = "String"
+        description = "ARN of the Secrets Manager secret"
+        default     = local.secret_arn
+      }
+      HANASID = {
+        type        = "String"
+        description = "SAP HANA System ID"
+        default     = var.hana_sid
+      }
+      HANAInstanceNumber = {
+        type        = "String"
+        description = "SAP HANA Instance Number"
+        default     = var.hana_instance_number
+      }
+    }
+    mainSteps = [
+      {
+        action = "aws:runShellScript"
+        name   = "registerSAPApplication"
+        inputs = {
+          runCommand = [
+            "#!/bin/bash",
+            "set -e",
+            "echo '=== Registering SAP HANA Application ==='",
+            "TOKEN=$(curl -s -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 21600')",
+            "INSTANCE_ID=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/instance-id)",
+            "REGION=$(curl -s -H \"X-aws-ec2-metadata-token: $TOKEN\" http://169.254.169.254/latest/meta-data/placement/region)",
+            "if [ -z \"$REGION\" ]; then REGION=us-east-1; fi",
+            "echo \"Instance: $INSTANCE_ID, Region: $REGION, SID: {{HANASID}}, Instance Number: {{HANAInstanceNumber}}\"",
+            "aws ssm-sap register-application --application-id {{HANASID}} --application-type HANA --instances $INSTANCE_ID --sap-instance-number {{HANAInstanceNumber}} --sid {{HANASID}} --credentials '[{\"DatabaseName\":\"{{HANASID}}/SYSTEMDB\",\"CredentialType\":\"ADMIN\",\"SecretId\":\"{{SecretArn}}\"}]' --region $REGION",
+            "echo '=== Registration complete ==='",
+            "aws ssm-sap get-application --application-id {{HANASID}} --region $REGION",
+          ]
+        }
+      }
+    ]
+  })
+
+  tags = merge(var.tags, {
+    Name = "${var.project_name}-register-sap-app-v2"
+  })
+}
+
+resource "aws_ssm_association" "register_sap" {
+  name = aws_ssm_document.register_sap_application.name
+
+  targets {
+    key    = "InstanceIds"
+    values = var.instance_ids
+  }
+
+  parameters = {
+    SecretArn          = local.secret_arn
+    HANASID            = var.hana_sid
+    HANAInstanceNumber = var.hana_instance_number
+  }
+
+  compliance_severity = "HIGH"
+  max_concurrency     = "1"
+  max_errors          = "0"
+
+  output_location {
+    s3_bucket_name = var.ssm_output_bucket
+    s3_key_prefix  = "ssm-output/sap-registration/"
+  }
+}
 
