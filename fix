@@ -460,6 +460,50 @@ Reboot: sudo reboot
 After reboot, all 3 checks should pass
 Then SAP registration will work
 The SAP registration, backups, SSM — NOTHING will work until the disk has free space. Fix the disk first, everything else follows.
+---------------------------------------------------------------------------------
+The register-application command needs the SID, instance number, and credentials in a specific format. Let me fix the SSM document:
 
+
+1 tool
+
+The issue is the register-application command is missing --sap-instance-number and the --credentials format needs the SID. Let me fix:
+
+
+4 tools
+
+
+Edited
+
+main.tf
+
+
+Ran command
+
+
+Pushed to remote
+
+2
+
+Fixed and pushed to both branches.
+
+What was missing:
+
+# Before (failed)
+aws ssm-sap register-application \
+  --application-id HSB \
+  --application-type HANA \
+  --instances $INSTANCE_ID \
+  --credentials '[...]' \
+  --region $REGION
+
+# After (fixed) - added --sap-instance-number and --sid
+aws ssm-sap register-application \
+  --application-id HSB \
+  --application-type HANA \
+  --instances $INSTANCE_ID \
+  --sap-instance-number 00 \
+  --sid HSB \
+  --credentials '[...]' \
+  --region $REGION
 
 
