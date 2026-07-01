@@ -667,3 +667,18 @@ Check the pipeline plan stage output — it should show:
 
 Successfully configured the backend "s3"!
 If instead it shows a warning about state, the permissions aren't working yet.
+---------------------------------------------------------------------------------
+
+The code is correct — it uses $INSTANCE_ID. The problem is the old registration with HSB still exists. You need to:
+
+Step 1: Deregister the old one:
+
+aws ssm-sap deregister-application --application-id HSB --region us-east-1
+Step 2: Delete the old SSM document (it has the old script cached):
+
+aws ssm delete-document --name sap-hana-backup-register-sap-app-v2 --region us-east-1
+Step 3: Re-run the pipeline — it will create a new SSM document with $INSTANCE_ID and register fresh.
+
+The SSM document content is baked in at creation time. Since the old document was created with SID, deleting and recreating it is the only way to pick up the new code.
+
+
