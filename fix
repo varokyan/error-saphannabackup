@@ -636,3 +636,34 @@ resource "aws_ssm_association" "register_sap" {
 ------------------------------------------------------------
 
 aws ssm-sap deregister-application --application-id HSB --region us-east-1
+--------------------------------------------------------------------------------
+The S3 backend is configured but the state file isn't being written properly. Check if the runner role has S3 write permissions on the bucket.
+
+Run this on the runner or in CloudShell:
+
+aws s3 ls s3://poc-ssm-output-677277859823-us-east-1-an/sap-hana-backup/
+If the terraform.tfstate file is NOT there, the runner can't write to the bucket.
+
+Add this permission to poc-runner-role:
+
+{
+  "Effect": "Allow",
+  "Action": [
+    "s3:GetObject",
+    "s3:PutObject",
+    "s3:DeleteObject",
+    "s3:ListBucket"
+  ],
+  "Resource": [
+    "arn:aws:s3:::poc-ssm-output-677277859823-us-east-1-an",
+    "arn:aws:s3:::poc-ssm-output-677277859823-us-east-1-an/*"
+  ]
+}
+After adding the permission, re-run the pipeline. Terraform will save state to S3 and the "AlreadyExists" errors will stop.
+
+To verify it's working after adding permission:
+
+Check the pipeline plan stage output — it should show:
+
+Successfully configured the backend "s3"!
+If instead it shows a warning about state, the permissions aren't working yet.
