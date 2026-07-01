@@ -683,3 +683,16 @@ failed to run commands: exit status 255
 An error occurred (ValidationException) when calling the RegisterApplication operation: DatabaseNames in credentials must follow the format of <SID>/<database_name>. e.g. HDB/SYSTEMDB
 
 failed to run commands: exit status 255
+----------------------------------------------------------
+
+
+│ Error: expected advanced_backup_setting.0.resource_type to be one of ["EC2"], got SAP HANA on Amazon EC2
+│ 
+│   with module.backup.aws_backup_plan.sap_hana,
+│   on modules/backup/main.tf line 13, in resource "aws_backup_plan" "sap_hana":
+│   13: resource "aws_backup_plan" "sap_hana" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
