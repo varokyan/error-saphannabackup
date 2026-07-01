@@ -633,3 +633,6 @@ resource "aws_ssm_association" "register_sap" {
   }
 }
 
+------------------------------------------------------------
+
+aws ssm-sap deregister-application --application-id HSB --region us-east-1
