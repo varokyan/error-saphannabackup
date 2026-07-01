@@ -696,3 +696,11 @@ failed to run commands: exit status 255
 Cleaning up project directory and file based variables
 00:00
 ERROR: Job failed: exit status 1
+-------------------------------------------
+
+ Error: creating Backup Vault (sap-hana-backup-vault): operation error Backup: CreateBackupVault, https response error StatusCode: 400, RequestID: 038c3400-107b-4fbb-b634-68ac891c14a5, AlreadyExistsException: Backup vault with the same name already exists
+│ 
+│   with module.backup.aws_backup_vault.sap_hana,
+│   on modules/backup/main.tf line 4, in resource "aws_backup_vault" "sap_hana":
+│    4: resource "aws_backup_vault" "sap_hana" {
+│ 
