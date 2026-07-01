@@ -703,4 +703,15 @@ ERROR: Job failed: exit status 1
 │   with module.backup.aws_backup_vault.sap_hana,
 │   on modules/backup/main.tf line 4, in resource "aws_backup_vault" "sap_hana":
 │    4: resource "aws_backup_vault" "sap_hana" {
+│ ------------------------------------------------------------------------
+╷
+│ Error: creating Backup Selection (sap-hana-backup-instance-selection): operation error Backup: CreateBackupSelection, https response error StatusCode: 400, RequestID: b5c852e4-63c5-4029-badc-f68475439215, InvalidParameterValueException: Invalid resource selection: 'arn:aws:ssm-sap:us-east-1:677277859823:HANA/i-0d939938273696777'. ResourceId does not match the expected format.
 │ 
+│   with module.backup.aws_backup_selection.sap_hana_instances,
+│   on modules/backup/main.tf line 71, in resource "aws_backup_selection" "sap_hana_instances":
+│   71: resource "aws_backup_selection" "sap_hana_instances" {
+│ 
+╵
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit status 1
